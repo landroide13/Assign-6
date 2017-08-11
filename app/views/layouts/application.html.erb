@@ -9,6 +9,7 @@
 
   <body>
   <div><%= session[:user_id] %></div>
+  <div class="alert"><%= flash[:notice] %></div>
   <class="comlumns">
     <%= yield %>
   </body>
