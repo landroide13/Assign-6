@@ -1,0 +1,12 @@
+
+<% if current_user %>
+  <h1>Welcome <%= current_user.name %></h1>
+  <% else %>
+   <h1>Welcome Guest</h1>
+   <%= link_to 'Create Account' , new_user_path , class:'button' %>
+<% end %>
+
+
+
+
+
