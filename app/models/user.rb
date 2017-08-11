@@ -27,12 +27,16 @@ class User < ApplicationRecord
 #   end
 
   def add_friend(another)
+    friends << another
+  end
 
+  def is_friend?(another_user)
+    friends.include?(another_user)
   end
 
   def friend_names
     friends.map{|e| e.name}
-    end
+  end
   
 
 end

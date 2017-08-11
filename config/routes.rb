@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  delete 'remove_friend' => 'friendship#destroy'
+
+  resources :friendships
+
   get 'sessions/new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

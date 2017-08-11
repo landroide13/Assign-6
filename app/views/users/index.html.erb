@@ -2,12 +2,22 @@
 
 <table class="table">
   <tbody>
-    <% User.all.each do |user| %>
+    <% User.all.each do |another_user| %>
       <tr>
-        <td><%= image_tag user.image_url_or_default %></td>
-        <td><%= user.name %>
-        <td><%= user.email %></td>
+        <td><%= image_tag another_user.image_url_or_default %></td>
+        <td><%= another_user.name %>
+        <td><%= another_user.email %></td>
       </tr>
+
+      <%= if current_user.is_friend?(another_user) %>
+          <%= link_to 'Remove Friend',remove_friend_path(user_id: another_user.id) , class:"button" , method :delete %>
+        <%  else %>
+         <%= form_for current_user.friendships.build(friend: another_user)  do |f|%>
+          <%= f.hidden_field :friend.id%>
+          <button class="button">Add Friend</button>
+          <% end %>
+      <% end %>    
+
     <% end %>
   </tbody>
 </table>    
