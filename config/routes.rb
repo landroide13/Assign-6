@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
  
+  #get 'messages/inbox' 
+
+  resources :messages do
+    collection do
+      get :inbox
+      get :sent
+    end
+  end    
+
+
+  get 'profile' => 'user#edit'
+  get 'friends' => 'friends#index'
+
+  get 'auth/provider/callback' => 'sessions#callback'
+
   delete 'remove_friend' => 'friendship#destroy'
 
   resources :friendships

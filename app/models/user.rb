@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: {case_sensitive: false}
 
-  has_many :friendships, dependent :destroy
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_secure_password
 

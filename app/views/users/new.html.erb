@@ -5,8 +5,8 @@
 
 <ul class="error">
   <% if @user.errors.present? %>
-    <%@user.errors.full_message.each do |error|%>
-     <li><%= error%></li>
+    <% @user.errors.full_message.each do |error|%>
+     <li><%= error %></li>
     <% end %>
   <% end %>
 </ul>
