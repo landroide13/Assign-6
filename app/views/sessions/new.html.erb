@@ -1,11 +1,6 @@
-<h1>Login</h1>
+<h1 class="title">Login</h1>
 
+ <%= render  "login" , user: @user  %>
 
-<% form_tag login_path do %>
-    <%= text_field_tag :email%>
-    <%= password_field_tag :password%>
-    
-    <%= submit_tag %>
-<% end %>
 
 
