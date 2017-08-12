@@ -1,11 +1,34 @@
 
 <% if current_user %>
-  <h1>Welcome <%= current_user.name %></h1>
+    <div class="columns">
+      <div class="card column is-4">
+        <h1 class="title">Welcome</h1>
+
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <%= image_tag current_user.image_default %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4"><%= current_user.name %></p>
+            <p class="subtitle is-6"><%= current_user.email%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   <% else %>
-    <h1>Welcome Guest</h1>
-      <%= link_to 'Create Account' , new_user_path , class:'button' %>
-    
+  <div class="columns">
+      <div class="card column is-4">
+        <h1>Welcome</h1>
+      <%= link_to 'Join Us' , new_user_path , class:'button' %>
       <%= link_to 'Login' , login_path , class:'button' %>
+      </div>
+  </div>
+
 <% end %>
 
 

@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.sent_messages.build message_params
     if @message.save
-      redirect_to send_messages_path
+      redirect_to sent_messages_path
       else
     
      render "new"
