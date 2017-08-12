@@ -28,15 +28,16 @@
           <div class="navbar-end">
             <% if current_user %>
               <%= link_to profile_path, class: "navbar-item" do %>
-                <%= image_tag current_user.image_default %>
-                
+                <p><%=  current_user.name %>'s Profile </p>
               <% end %>
 
-              <div class="navbar-item has-dropdown is-hoverable">
-                <%= link_to "My Friends", friends_path, class: "navbar-item" %>
-                <%= link_to "Message", new_message_path, class: "navbar-item" %>
-                <%= link_to "Log out", logout_path, class: "navbar-item" %>
-              </div>
+              <nav class="breadcrumb  has-arrow-separator" aria-label="breadcrumbs">
+                <ul>
+                  <li><%= link_to "My Friends", friends_path, class: "navbar-item" %></li>
+                  <li><%= link_to "Message", new_message_path, class: "navbar-item" %></li>
+                  <li><%= link_to "Log out", logout_path, class: "navbar-item" %></li>
+                </ul>
+              </nav>
 
             <% else %>
               <%= link_to "Sign Up", new_user_path, class: "navbar-item" %>
