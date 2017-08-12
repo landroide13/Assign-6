@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   
-  
   def new
   end
 
@@ -13,7 +12,6 @@ class SessionsController < ApplicationController
         else
         redirect_to login_path, flash:{notice: "Invalid password"}  
       end  
-        
     else
      redirect_to login_path, flash:{notice: "Invalid Email"}    
     end

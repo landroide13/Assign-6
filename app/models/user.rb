@@ -35,17 +35,17 @@ class User < ApplicationRecord
 
 #-----------------------------------------------------------
 
-#  def friends
-#   result[]
-#   friendships.each do |f|
-#     result << f.friend
-#     end
-#    result
-#   end
+ def friends
+  result[]
+  friendships.each do |f|
+    result << f.friend
+  end
+  result
+ end
 
 
   def image_default
-    image_url.precsence || "http://lorempixel.com/128/128/sports/fake-user/"
+    image_url.presence || "http://lorempixel.com/128/128/sports/fake-user/"
   end 
 
   def add_friend(another)
@@ -67,5 +67,19 @@ class User < ApplicationRecord
   def self.recipient_options(user)
     except(user).map{|e| [e.name, e.id]}
   end  
+
+   def self.generate_users(u)
+     url = "https://randomuser.me/api?gender=female&results=#{u}"
+     response = HTTP.get(url)
+     data = response.parse
+     people = data["results"]
+     people.each do |p|
+       name = p["name"]["first"] + " "+p["name"]["last"]
+       User.create!(
+        name: name.titleize, password: p["login"]["password"],
+        email: p["email"], image_url: p["picture"]["large"]
+       ) 
+     end  
+   end  
 
 end

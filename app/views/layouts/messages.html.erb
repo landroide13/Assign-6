@@ -8,14 +8,14 @@
           Messages
         </p>
           <ul class="menu-list">
-            <li><%= link_to 'Compose' , new_message_path, class:"is-active" %></li>
-            <li><%= link_to 'Inbox' , inbox_messages_path,  %></li>
-            <li><%= link_to 'Sent' , sent_messages_path,  %></li>
+            <li><%= link_to 'Compose' , new_message_path, class:"#{'is-active' if current_page?(new_message_path)}" %></li>
+            <li><%= link_to 'Inbox' , inbox_messages_path, class:"#{'is-active' if current_page?(inbox_message_path)}" %></li>
+            <li><%= link_to 'Sent' , sent_messages_path, class:"#{'is-active' if current_page?(sent_message_path)}" %></li>
           </ul>
       </aside>
     </div>
     
-    <div class="column auto">
+    <div class="column">
       <%= yield %>
     </div>
   </div>

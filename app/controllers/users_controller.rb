@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      log_in(user)
+      log_in(@user)
       redirect_to root_path
       flash[:success] = "User saved ¡!"
      else
