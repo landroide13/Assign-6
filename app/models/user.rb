@@ -18,6 +18,20 @@ class User < ApplicationRecord
     BCrypt::Password.new(current_password) == password_digest
   end
 
+  #---------------------------------------------------------
+
+  #def self.from_omniauth(auth)
+
+  # email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
+  # user = where(email: eamil).first_or_initialize
+  # user.image_url = auth[:info][:image]
+  # user.name = auth[:info][:name]
+  # user.password = SecureRandom.hex
+  #user.save && user
+  #end
+
+#-----------------------------------------------------------
+
 #  def friends
 #   result[]
 #   friendships.each do |f|
@@ -25,6 +39,10 @@ class User < ApplicationRecord
 #     end
 #    result
 #   end
+
+
+  def image_default
+    image_url.precsence || "http://lorempixel.com/128/128/sports/fake-user/"
 
   def add_friend(another)
     friends << another
@@ -37,6 +55,13 @@ class User < ApplicationRecord
   def friend_names
     friends.map{|e| e.name}
   end
-  
+
+  def self.except(user)
+    all - [user]
+  end
+
+  def self.recipient_options(user)
+    except(user).map{|e| [e.name, e.id]}
+  end  
 
 end

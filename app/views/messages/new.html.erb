@@ -1,25 +1,28 @@
 
 
-<div class="columns">
-  <div class="column is-one-third">
-    <aside class="menu">
-      <p class="menu-label">
-        Messages
-      </p>
-        <ul class="menu-list">
-          <li><%= link_to 'Compose' , new_message_path, class:"is-active" %></li>
-          <li><%= link_to 'Inbox' , inbox_messages_path,  %></li>
-          <li><%= link_to 'Sent' , sent_messages_path,  %></li>
-        </ul>
-    </aside>
+<h1 class="title">New Messages</h1>
+
+<% form_for @message do |f|%>
+  <div class="field">
+    <div class="control">
+      <%= f.label :recipient_id, class:"label"  %>
+      <div class="select">
+        <%= f.select :recipient_id, User.recipient_options(current_user) %>
+      </div>
+    </div>
   </div>
-  
-  <div class="column auto">
-    <h1 class="title">New Message</h1>
 
-
+  <div class="field">
+    <div class="control">
+      <%= f.label :body, class:"label"  %>
+      <%= f.text_area :body , class:"textarea" %>
+    </div>
   </div>
-</div>
 
-
-
+  <div class="field">
+    <div class="control">
+      <button class="button">Send</button>
+    </div>
+  </div>
+    
+<% end %>
