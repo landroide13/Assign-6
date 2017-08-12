@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   end 
 
   def inbox
-    @messages = current_user.recivied_messages
+    @messages = current_user.recipient_messages
   end
 
   def sent
@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to send_messages_path
       else
-     flash.now:[:error] = "Error : #{message.errors.full_messages.to_sentence}"
+    
      render "new"
     end 
   end 

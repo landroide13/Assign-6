@@ -22,12 +22,6 @@
             </div>
           </div>
 
-          <div class="navbar-burger burger" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
         <div class="navbar-menu" id="navMenu">
           <div class="navbar-start">
           </div>
@@ -35,21 +29,15 @@
             <% if current_user %>
               <%= link_to profile_path, class: "navbar-item" do %>
                 <%= image_tag current_user.image_default %>
-                &nbsp;<%= current_user.name %>
+                
               <% end %>
 
               <div class="navbar-item has-dropdown is-hoverable">
-                <a href="/" class="navbar-link">
-                 
-                </a>
-
-                <div class="navbar-dropdown">
-                  <%= link_to "My Friends", friends_path, class: "navbar-item" %>
-                  <%= link_to "Friended By", friends_path, class: "navbar-item" %>
-                </div>
+                <%= link_to "My Friends", friends_path, class: "navbar-item" %>
+                <%= link_to "Message", new_message_path, class: "navbar-item" %>
+                <%= link_to "Log out", logout_path, class: "navbar-item" %>
               </div>
 
-              
             <% else %>
               <%= link_to "Sign Up", new_user_path, class: "navbar-item" %>
               <%= link_to "Log In", login_path, class: "navbar-item" %>
@@ -59,12 +47,8 @@
       </nav>
     </div>
 
-  <div class="container" style="margin-top:20px ">
-      <% if content_for?(:content) %>
-          <%= yield(:content) %>
-        <% else %>
-          <%= yield%>
-      <%end %>  
+  <div class="container" style="margin-top: 20px ">
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </div>  
     
   </body>
