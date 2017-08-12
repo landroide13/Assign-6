@@ -5,10 +5,11 @@ class MessagesController < ApplicationController
   end 
 
   def inbox
+    @messages = current_user.recivied_messages
   end
 
   def sent
-  
+    @messages = current_user.sent_messages
   end  
 
   def new

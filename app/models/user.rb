@@ -1,8 +1,11 @@
 class User < ApplicationRecord
-  validates :email, presence: true, uniqueness: {case_sensitive: false}
+  validates :name, :email, presence: true
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  has_many :sent_messages, class_name:"Message", foreign_key:"sender_id"
+  has_many :recipient_messages, class_name:"Message", foreign_key:"recipient_id"
+
   has_secure_password
 
   def password=(value)
@@ -43,6 +46,7 @@ class User < ApplicationRecord
 
   def image_default
     image_url.precsence || "http://lorempixel.com/128/128/sports/fake-user/"
+  end 
 
   def add_friend(another)
     friends << another
