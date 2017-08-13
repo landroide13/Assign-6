@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #get 'auth/provider/callback' => 'sessions#callback'
 
-  delete 'remove_friend' => 'friendship#destroy'
+  delete 'remove_friend' => 'friendships#destroy'
 
   resources :friendships
 

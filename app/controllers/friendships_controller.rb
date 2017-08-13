@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
 
   def destroy
     another_user = User.find params[:user_id]
-    current_user.friends - another_user
+    current_user.friends.delete(another_user)
     redirect_to users_path
   end
 
