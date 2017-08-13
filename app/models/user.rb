@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  validates :name, :email, presence: true
+  validates :email, presence: true
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  
+
   has_many :sent_messages, class_name:"Message", foreign_key:"sender_id"
   has_many :recipient_messages, class_name:"Message", foreign_key:"recipient_id"
 
@@ -43,7 +43,7 @@ class User < ApplicationRecord
 #   end
 #   result
 #  end
-
+#------------------------------------------------------------
 
   def image_default
     image_url.presence || "http://lorempixel.com/128/128/sports/fake-user/"

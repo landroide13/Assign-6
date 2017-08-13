@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <nav class="navbar><!DOCTYPE html">
+    <nav class="navbar <!DOCTYPE html>"
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="/">
@@ -22,35 +22,30 @@
             </div>
           </div>
 
-        <div class="navbar-menu" id="navMenu">
-          <div class="navbar-start">
-          </div>
+        <div class="navbar-menu toRight" id="navMenu">
           <div class="navbar-end">
             <% if current_user %>
               <%= link_to profile_path, class: "navbar-item" do %>
-                <p><%=  current_user.name %>'s Profile </p>
+                <p><%=  current_user.name.titleize %>'s Profile </p>
               <% end %>
 
                 <nav class="breadcrumb  has-arrow-separator" aria-label="breadcrumbs">
                   <ul>
-                    <li><%= link_to "My Friends", users_path, class: "navbar-item" %></li>
-                    <li><%= link_to "Message", new_message_path, class: "navbar-item" %></li>
-                    <li><%= link_to "Log out", logout_path, class: "navbar-item" %></li>
+                    <li><%= link_to "My Friends", users_path, class: "navbar-item white" %></li>
+                    <li><%= link_to "Message", new_message_path, class: "navbar-item white" %></li>
+                    <li><%= link_to "Log out", logout_path, class: "navbar-item white" %></li>
                   </ul>
                 </nav>
-
-              <% else %>
-              <%= link_to "Sign Up", new_user_path, class: "navbar-item" %>
-              <%= link_to "Log In", login_path, class: "navbar-item" %>
             <% end %>
           </div>
         </div>
+      </div>
       </nav>
     </div>
 
-  <div class="container" style="margin-top: 20px ">
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </div>  
+      <div class="container" style="margin-top: 20px ">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>  
     
   </body>
 </html>
