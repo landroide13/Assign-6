@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   end    
 
 
-  get 'profile' => 'user#edit'
+  get 'profile' => 'users#edit'
   get 'friends' => 'friends#index'
 
-  get 'auth/provider/callback' => 'sessions#callback'
+  #get 'auth/provider/callback' => 'sessions#callback'
 
   delete 'remove_friend' => 'friendship#destroy'
 
