@@ -31,15 +31,15 @@
                 <p><%=  current_user.name %>'s Profile </p>
               <% end %>
 
-              <nav class="breadcrumb  has-arrow-separator" aria-label="breadcrumbs">
-                <ul>
-                  <li><%= link_to "My Friends", friends_path, class: "navbar-item" %></li>
-                  <li><%= link_to "Message", new_message_path, class: "navbar-item" %></li>
-                  <li><%= link_to "Log out", logout_path, class: "navbar-item" %></li>
-                </ul>
-              </nav>
+                <nav class="breadcrumb  has-arrow-separator" aria-label="breadcrumbs">
+                  <ul>
+                    <li><%= link_to "My Friends", users_path, class: "navbar-item" %></li>
+                    <li><%= link_to "Message", new_message_path, class: "navbar-item" %></li>
+                    <li><%= link_to "Log out", logout_path, class: "navbar-item" %></li>
+                  </ul>
+                </nav>
 
-            <% else %>
+              <% else %>
               <%= link_to "Sign Up", new_user_path, class: "navbar-item" %>
               <%= link_to "Log In", login_path, class: "navbar-item" %>
             <% end %>
