@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-   if user = User.find_by(email: params[:email])
-      if user.authenticate(params[:password])
-          log_in(user)
+   if @user = User.find_by(email: params[:email])
+      if @user.authenticate(params[:password])
+          log_in(@user)
           redirect_to root_path, flash:{notice: "login.."}
         else
           redirect_to login_path, flash:{notice: "Invalid password"}  
