@@ -26,8 +26,8 @@
 
           <div class="field">
             <div class="label">URL</div>
-            <div class="control">
-              <%= f.text_field :image_url, class: 'input' %>
+            <%= f.label :avatar, class:"label"%>
+              <div class="control"><%= f.file_field :avatar, class: 'input' %>
             </div>
           </div>
           <div class="field">
