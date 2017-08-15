@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'http'
 
 gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-aws'
 
 
 group :development, :test do
