@@ -48,8 +48,12 @@ class User < ApplicationRecord
 #------------------------------------------------------------
 
   def image_default
-    avatar.url || image_url.presence || "http://lorempixel.com/128/128/sports/fake-user/"
+    avatar.url #|| 
   end 
+
+  def another_image
+    image_url.presence || "http://lorempixel.com/128/128/sports/fake-user/"
+  end  
 
   def add_friend(another)
     friends << another
@@ -80,7 +84,7 @@ class User < ApplicationRecord
        name = p["name"]["first"] + " "+p["name"]["last"]
        User.create!(
         name: name.titleize, password: p["login"]["password"],
-        email: p["email"], image_url: p["picture"]["large"]
+        email: p["email"] #image_url: p["picture"]["large"]
        ) 
      end  
    end  

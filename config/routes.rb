@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 
   get 'profile' => 'users#edit'
+  put 'update'  => 'users#update'
   get 'friends' => 'friends#index'
 
   #get 'auth/provider/callback' => 'sessions#callback'

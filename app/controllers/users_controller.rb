@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.create user_params
     redirect_to root_path
   end 
 
