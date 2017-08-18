@@ -5,6 +5,7 @@
     <label class="label">To :</label>
      <div class="control">
      <%= f.text_field :wall_user_id %>
+     <%= f.hidden_field :poster_id,  value: current_user.id %>
     </div>
   </div>
   <div class="field">
