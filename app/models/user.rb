@@ -52,7 +52,7 @@ class User < ApplicationRecord
 #------------------------------------------------------------
 
   def image_default
-    avatar.url #|| 
+    avatar.url 
   end 
 
   def another_image
@@ -92,5 +92,22 @@ class User < ApplicationRecord
        ) 
      end  
    end  
+
+
+  def toggle_like!(item)
+    if like = likes.where(item: item).first
+      likes.destroy
+    else
+      likes.where(item: item).create!
+   end  
+  end
+
+  def name_or_email
+    name.present? ? name : email
+  end 
+
+
+
+
 
 end
