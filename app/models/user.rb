@@ -9,20 +9,24 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  has_many :posts, foreign_key: "poster_id", dependent: :destroy
+  has_many :posts_on_his_wall, class_name: 'Post', foreign_key: 'wall_user_id'
+  has_many :likes, dependent: :destroy
+
   has_secure_password
 
-  def password=(value)
-    @password = value
-    self.password_digest = BCrypt::Password.create(value)
-    end
+  # def password=(value)
+  #   @password = value
+  #   self.password_digest = BCrypt::Password.create(value)
+  #   end
 
-  def password
-    @password
-  end
+  # def password
+  #   @password
+  # end
 
-  def is_valid?(current_password)
-    BCrypt::Password.new(current_password) == password_digest
-  end
+  # def is_valid?(current_password)
+  #   BCrypt::Password.new(current_password) == password_digest
+  # end
 
   #---------------------------------------------------------
 
