@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
 
-  before_action :authenticate_user! # devise method to help ensure logging in
+  #before_action :authenticate_user! # devise method to help ensure logging in
   
   def toggle
     if params[:post_id]
