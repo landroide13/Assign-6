@@ -96,7 +96,7 @@ class User < ApplicationRecord
 
   def toggle_like!(item)
     if like = likes.where(item: item).first
-      likes.destroy
+      like.destroy
     else
       likes.where(item: item).create!
    end  
@@ -106,7 +106,9 @@ class User < ApplicationRecord
     name.present? ? name : email
   end 
 
-
+  def liking?(item)
+    likes.where(item: item).exists?
+  end
 
 
 

@@ -8,6 +8,12 @@ class LikesController < ApplicationController
     end
     
     current_user.toggle_like!(item)
+
+    respond_to do |format|
+      format.html {redirect_back fallback_location: root_path}
+      format.js
+     end
+
   end
 
 end
