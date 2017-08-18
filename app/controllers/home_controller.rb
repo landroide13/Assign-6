@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
+  
   def index
-    #session.clear
+    @post = Post.new
   end
+
+
+
 end

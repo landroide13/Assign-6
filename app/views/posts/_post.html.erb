@@ -4,7 +4,7 @@
       <div class="media">
         <div class="media-left">
           <p class="image is-32x32">
-            <img src="https://coderschool123.s3-ap-southeast-1.amazonaws.com/uploads/twitter-square.jpeg" alt="Twitter square">
+            <img src="https://coderschool123.s3-ap-southeast-1.amazonaws.com/uploads/twitter-square.jpeg" alt="">
           </p>
         </div>
         <div class="media-content">
@@ -22,10 +22,10 @@
       <div class="level">
         <div class="level-left">
           <div class="level-item">
-            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: "button is-white", method: "post" %>
+            <%= link_to fa_icon("thumbs-up", text: "Like"), "/", class: "button is-white", method: "post" %>
           </div>
           <div class="level-item">
-            <%= link_to fa_icon("comments", text: "Comment"), "/changeme", class: "button is-white" %>
+            <%= link_to fa_icon("comments", text: "Comment"), "/", class: "button is-white" %>
           </div>
         </div>
         <%= post.likes.map {|e| e.user.email }.to_sentence %>
@@ -33,14 +33,5 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-<h1 class="title">Posts</h1>
-<%= render Post.all %>
 
 
