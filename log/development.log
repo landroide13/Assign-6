@@ -19126,3 +19126,1695 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 131ms (Views: 98.3ms | ActiveRecord: 21.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:18:36 +0700
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 343ms (Views: 311.2ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-08-19 10:18:41 +0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-08-19 10:18:55 +0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7Y+uYJoVT2DD+KL1tK79Gb7CERbiKqmxt7k0rdYo9sBfW+0ZYBYb+XJEtOpSNQN4+CmfwZpkKraV8yRnH7NClw==", "commit"=>"Enter"}
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 37ms (ActiveRecord: 16.9ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-08-19 10:18:55 +0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 40ms (Views: 38.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:19:06 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-19 10:19:08 +0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (10.6ms)
+  Rendered users/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 48ms (Views: 34.7ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-19 10:19:37 +0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IaOxGVRbOYKzrzv+Iq05jgvKRvjyWmORodK3ah5sS7STd/JgrlhtGwITLeHENsfvTSHIL4oU4JaDmKeg1/f/4w==", "user"=>{"name"=>"ron", "email"=>"ron@com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create account"}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (5.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ron"], ["email", "ron@com"], ["password_digest", "$2a$10$MdjJmpTeBHAmH1bFFOobju/pCC/JKTTLgHiV2A9.AjsPnRirVB7Qy"], ["created_at", "2017-08-19 03:19:37.218882"], ["updated_at", "2017-08-19 03:19:37.218882"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 90ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:19:37 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (14.0ms)
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (3.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (99.1ms)
+Completed 200 OK in 132ms (Views: 117.0ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-08-19 10:19:42 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (67.4ms)
+Completed 200 OK in 93ms (Views: 79.2ms | ActiveRecord: 10.0ms)
+
+
+Started POST "/friendships" for 127.0.0.1 at 2017-08-19 10:19:44 +0700
+Processing by FriendshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0XsPwDXbTN2rS0HmmSpJ3e4vXi8VDTSR5FyViAhc5Eljr0y5z9gYRBr3V/l/sbe8qMTQ+G1Dt5bGFoVCwcdQHg==", "friendship"=>{"friend_id"=>"1"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 14], ["friend_id", 1], ["created_at", "2017-08-19 03:19:44.052124"], ["updated_at", "2017-08-19 03:19:44.052124"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 8ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-08-19 10:19:44 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (32.9ms)
+Completed 200 OK in 56ms (Views: 46.7ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/friendships" for 127.0.0.1 at 2017-08-19 10:19:45 +0700
+Processing by FriendshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sNrEykdKPQhYWbaamKTzzPbwVJsDnheUKEz8LFyQ+0kCDoezvUlpkenloIV+Pw2tsBvaTHvQlJMKBuzmlQtPHg==", "friendship"=>{"friend_id"=>"2"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 14], ["friend_id", 2], ["created_at", "2017-08-19 03:19:45.405664"], ["updated_at", "2017-08-19 03:19:45.405664"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-08-19 10:19:45 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (33.4ms)
+Completed 200 OK in 55ms (Views: 45.9ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/friendships" for 127.0.0.1 at 2017-08-19 10:19:46 +0700
+Processing by FriendshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AivAwD6swWNQ51y0gfZZDrg1oy7ZIRfG0h9SRQcNIHWw/4O5xK+V+uFbSqtnbadv/t4t+aFvlMHwVUKPzpaUIg==", "friendship"=>{"friend_id"=>"3"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 14], ["friend_id", 3], ["created_at", "2017-08-19 03:19:46.515157"], ["updated_at", "2017-08-19 03:19:46.515157"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 7ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-08-19 10:19:46 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 62ms (Views: 52.7ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:19:49 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.5ms)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (23.6ms)
+Completed 200 OK in 45ms (Views: 37.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/messages/new" for 127.0.0.1 at 2017-08-19 10:20:00 +0700
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/messages
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered messages/new.html.erb within layouts/messages (9.6ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (16.3ms)
+Completed 200 OK in 45ms (Views: 31.7ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/messages" for 127.0.0.1 at 2017-08-19 10:20:09 +0700
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MwZqgIYAuHEoYxpXrmHgNxFpEqQ317pHkrClq3gPLSOB0in5fAPs6JnfDEhI+h5WV4Kcc0+ZOUCw+rVhsZSZdA==", "message"=>{"recipient_id"=>"1", "body"=>"Bring me coffee"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "recipient_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["sender_id", 14], ["recipient_id", 1], ["body", "Bring me coffee"], ["created_at", "2017-08-19 03:20:09.383809"], ["updated_at", "2017-08-19 03:20:09.383809"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages/sent
+Completed 302 Found in 12ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/messages/sent" for 127.0.0.1 at 2017-08-19 10:20:09 +0700
+Processing by MessagesController#sent as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering messages/sent.html.erb within layouts/messages
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."sender_id" = $1[0m  [["sender_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [1 times] (2.5ms)
+  Rendered messages/sent.html.erb within layouts/messages (6.2ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (18.2ms)
+Completed 200 OK in 32ms (Views: 28.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/messages/inbox" for 127.0.0.1 at 2017-08-19 10:20:12 +0700
+Processing by MessagesController#inbox as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering messages/inbox.html.erb within layouts/messages
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" = $1[0m  [["recipient_id", 14]]
+  Rendered messages/inbox.html.erb within layouts/messages (2.6ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (23.6ms)
+Completed 200 OK in 34ms (Views: 30.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/messages/new" for 127.0.0.1 at 2017-08-19 10:20:12 +0700
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/messages
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered messages/new.html.erb within layouts/messages (4.3ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (17.1ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:20:15 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 45ms (Views: 37.3ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-08-19 10:20:42 +0700
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"z9vlVLEaIXNvccC5Bgm5mfwvYMtzODE6DfK6gUriCfF9D6YtSxl16t7N1qbgkkf4usTuHAt2sj0vuKpLg3m9pg==", "post"=>{"wall_user_id"=>"14", "poster_id"=>"14", "body"=>"Good moring to me"}, "commit"=>"Send"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("poster_id", "created_at", "updated_at", "body", "wall_user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["poster_id", 14], ["created_at", "2017-08-19 03:20:42.591047"], ["updated_at", "2017-08-19 03:20:42.591047"], ["body", "Good moring to me"], ["wall_user_id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:20:42 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.4ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (2.7ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [1 times] (26.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (51.4ms)
+Completed 200 OK in 74ms (Views: 61.6ms | ActiveRecord: 11.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-08-19 10:21:15 +0700
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u4nxug4iQ6BNlXBZuybpnq/wK/TKtOFGfPV6A75BPxAJXbLD9CEXOfwpZkZdvRf/6RulI7L6YkFev2rJd9qLRw==", "post"=>{"wall_user_id"=>"", "poster_id"=>"14", "body"=>"bring me coffee"}, "commit"=>"Send"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 37ms (Views: 30.0ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-08-19 10:21:18 +0700
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MT/JNS9UR9YNy8E42cmRJykScIZJvK4gWZCjCHgyVuSD64pM1VcTT7x31yc/Um9Gb/n+UTHyLSd72rPCsanisw==", "post"=>{"wall_user_id"=>"", "poster_id"=>"14", "body"=>"bring me coffee"}, "commit"=>"Send"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 30ms (Views: 25.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-08-19 10:21:31 +0700
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u4nxug4iQ6BNlXBZuybpnq/wK/TKtOFGfPV6A75BPxAJXbLD9CEXOfwpZkZdvRf/6RulI7L6YkFev2rJd9qLRw==", "post"=>{"wall_user_id"=>"13", "poster_id"=>"14", "body"=>"bring me coffee"}, "commit"=>"Send"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("poster_id", "created_at", "updated_at", "body", "wall_user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["poster_id", 14], ["created_at", "2017-08-19 03:21:31.040099"], ["updated_at", "2017-08-19 03:21:31.040099"], ["body", "bring me coffee"], ["wall_user_id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:21:31 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [1 times] (5.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (30.8ms)
+Completed 200 OK in 52ms (Views: 42.6ms | ActiveRecord: 7.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-08-19 10:21:46 +0700
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fEmhdwIeZy35lJn6Hj1nQj0nmVbY3zO6Xkc5E3jxWO7OneIO+B0ztEgoj+X4ppkje8wXgaCRsL18DSnZsWrsuQ==", "post"=>{"wall_user_id"=>"14", "poster_id"=>"14", "body"=>"bring me coffe"}, "commit"=>"Send"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("poster_id", "created_at", "updated_at", "body", "wall_user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["poster_id", 14], ["created_at", "2017-08-19 03:21:46.046992"], ["updated_at", "2017-08-19 03:21:46.046992"], ["body", "bring me coffe"], ["wall_user_id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:21:46 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [2 times] (8.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (37.2ms)
+Completed 200 OK in 61ms (Views: 50.5ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/toggle_like?post_id=11" for 127.0.0.1 at 2017-08-19 10:21:52 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (5.8ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "item_id", "item_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 14], ["item_id", 11], ["item_type", "Post"], ["created_at", "2017-08-19 03:21:52.408199"], ["updated_at", "2017-08-19 03:21:52.408199"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.4ms)
+Completed 200 OK in 38ms (Views: 4.7ms | ActiveRecord: 10.0ms)
+
+
+Started POST "/toggle_like?post_id=11" for 127.0.0.1 at 2017-08-19 10:21:55 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 63]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.4ms)
+Completed 200 OK in 13ms (Views: 4.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:21:57 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.5ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [2 times] (9.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (36.5ms)
+Completed 200 OK in 58ms (Views: 48.3ms | ActiveRecord: 8.0ms)
+
+
+Started POST "/toggle_like?post_id=13" for 127.0.0.1 at 2017-08-19 10:21:59 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"13"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "item_id", "item_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 14], ["item_id", 13], ["item_type", "Post"], ["created_at", "2017-08-19 03:21:59.947478"], ["updated_at", "2017-08-19 03:21:59.947478"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.4ms)
+Completed 200 OK in 16ms (Views: 5.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:22:01 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (10.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 59ms (Views: 49.5ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:25:04 +0700
+Processing by UsersController#edit as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:57: syntax error, unexpected keyword_end, expecting ':'
+  end 
+     ^
+/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:116: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/user.rb:57: syntax error, unexpected keyword_end, expecting ':'
+app/models/user.rb:116: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/application_controller.rb:26:in `current_user'
+app/controllers/users_controller.rb:25:in `edit'
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:25:24 +0700
+Processing by UsersController#edit as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:57: syntax error, unexpected keyword_end, expecting ':'
+    end
+       ^
+/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:117: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/user.rb:57: syntax error, unexpected keyword_end, expecting ':'
+app/models/user.rb:117: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/application_controller.rb:26:in `current_user'
+app/controllers/users_controller.rb:25:in `edit'
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:28:37 +0700
+Processing by UsersController#edit as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:117: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/user.rb:117: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/application_controller.rb:26:in `current_user'
+app/controllers/users_controller.rb:25:in `edit'
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:28:50 +0700
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (8.8ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 4.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `url?' for #<AvatarUploader:0x007fb2246fac38>
+Did you mean?  url):
+    32:           
+    33:           <div class="field">
+    34:             <div class="control">
+    35:               <%= image_tag current_user.image_default %>
+    36:             </div>
+    37:           </div>
+    38:           
+  
+app/models/user.rb:55:in `image_default'
+app/views/users/edit.html.erb:35:in `block in _app_views_users_edit_html_erb__2353370522629103022_70201545612400'
+app/views/users/edit.html.erb:7:in `_app_views_users_edit_html_erb__2353370522629103022_70201545612400'
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:31:57 +0700
+Processing by UsersController#edit as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:56: syntax error, unexpected keyword_end
+  end 
+     ^
+/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:115: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/user.rb:56: syntax error, unexpected keyword_end
+app/models/user.rb:115: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/application_controller.rb:26:in `current_user'
+app/controllers/users_controller.rb:25:in `edit'
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:33:02 +0700
+Processing by UsersController#edit as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:56: syntax error, unexpected keyword_end
+  end 
+     ^
+/Users/landrade/Desktop/Ruby/Bootcamp/Assign-6/fakebook/app/models/user.rb:115: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/user.rb:56: syntax error, unexpected keyword_end
+app/models/user.rb:115: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/application_controller.rb:26:in `current_user'
+app/controllers/users_controller.rb:25:in `edit'
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:33:26 +0700
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 4.7ms)
+
+
+  
+ActionView::Template::Error (nil is not a valid asset source):
+    32:           
+    33:           <div class="field">
+    34:             <div class="control">
+    35:               <%= image_tag current_user.image_default %>
+    36:             </div>
+    37:           </div>
+    38:           
+  
+app/views/users/edit.html.erb:35:in `block in _app_views_users_edit_html_erb__2353370522629103022_70201593453980'
+app/views/users/edit.html.erb:7:in `_app_views_users_edit_html_erb__2353370522629103022_70201593453980'
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:33:59 +0700
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 49ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/users/14" for 127.0.0.1 at 2017-08-19 10:34:10 +0700
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVB8sUBGOBPhEhBVyKCW2LfaCyTSHO+Kll8wW5X0+00DhD/IukVsilCuBkouO2i58TGF86pSbI20FSCRXG9PGg==", "user"=>{"name"=>"ron", "email"=>"ron@com", "password"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fb2288bcb30 @tempfile=#<Tempfile:/var/folders/ns/z9rc1x0s7150dylx9wlbklmw0000gn/T/RackMultipart20170819-48066-8t6et0.jpg>, @original_filename="coder-hat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"coder-hat.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Profile", "id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:34:10 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (2.6ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (44.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (97.1ms)
+Completed 200 OK in 151ms (Views: 122.1ms | ActiveRecord: 17.8ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:34:21 +0700
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/messages/new" for 127.0.0.1 at 2017-08-19 10:34:23 +0700
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/messages
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered messages/new.html.erb within layouts/messages (5.4ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (16.8ms)
+Completed 200 OK in 40ms (Views: 26.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2017-08-19 10:34:26 +0700
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 27ms (Views: 24.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:34:29 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.4ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (10.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (38.7ms)
+Completed 200 OK in 61ms (Views: 51.1ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/toggle_like?post_id=11" for 127.0.0.1 at 2017-08-19 10:34:39 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "item_id", "item_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 14], ["item_id", 11], ["item_type", "Post"], ["created_at", "2017-08-19 03:34:39.951111"], ["updated_at", "2017-08-19 03:34:39.951111"]]
+  [1m[35m (67.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.5ms)
+Completed 200 OK in 86ms (Views: 5.3ms | ActiveRecord: 69.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:34:47 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.8ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (18.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (46.4ms)
+Completed 200 OK in 68ms (Views: 58.1ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/messages/new" for 127.0.0.1 at 2017-08-19 10:53:28 +0700
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/messages
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered messages/new.html.erb within layouts/messages (4.0ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (22.9ms)
+Completed 200 OK in 33ms (Views: 30.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/messages/sent" for 127.0.0.1 at 2017-08-19 10:53:34 +0700
+Processing by MessagesController#sent as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering messages/sent.html.erb within layouts/messages
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."sender_id" = $1[0m  [["sender_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [1 times] (3.8ms)
+  Rendered messages/sent.html.erb within layouts/messages (7.3ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (19.0ms)
+Completed 200 OK in 34ms (Views: 30.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:56:53 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.7ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (12.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (26.5ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 2.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `sender' for nil:NilClass):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @messages.sender.name %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201592847280'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201592847280'
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:57:32 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.5ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (11.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (23.6ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 2.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `another_user' for nil:NilClass):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @messages.another_user %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201580977460'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201580977460'
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:58:44 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.4ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (11.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (23.4ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `sender_id' for nil:NilClass):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @messages.sender_id %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201594005600'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201594005600'
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:59:28 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (11.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (23.4ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 2.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @messages.body %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201612892220'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201612892220'
+Started GET "/" for 127.0.0.1 at 2017-08-19 10:59:38 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.5ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (10.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (21.6ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @messages %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201601383600'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201601383600'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:01:29 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.4ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (10.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (22.0ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @message.body %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201546798040'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201546798040'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:02:09 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (10.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (21.3ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @messages %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201582500300'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201582500300'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:04:10 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.5ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (10.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (22.6ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.8ms)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <%= render @messages %>
+    61:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+    62:                       <br>
+    63:                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201581683120'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201581683120'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:11:41 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (12.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (24.8ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 3.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <% @messages.each do |m|  %>
+    61:                         <%= render message.body%>
+    62:                       <% end %>
+    63:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201612920100'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201612920100'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:12:25 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (2.0ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (10.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (24.6ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 3.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <% @messages.each do |m|  %>
+    61:                         <%= render m.body%>
+    62:                       <% end %>
+    63:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201601280980'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201601280980'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:16:57 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.7ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (22.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (278.5ms)
+Completed 500 Internal Server Error in 299ms (ActiveRecord: 3.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `message' for #<#<Class:0x007fb22c6ae088>:0x007fb22c6ac198>
+Did you mean?  message_url):
+    57:               <div class="media-content">
+    58:                   <div class="content">
+    59:                     <p>
+    60:                       <% message.each do |m|  %>
+    61:                         <%= render m.body%>
+    62:                       <% end %>
+    63:                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+  
+app/views/home/index.html.erb:60:in `block in _app_views_home_index_html_erb__2432902240018693935_70201613055120'
+app/views/home/index.html.erb:49:in `_app_views_home_index_html_erb__2432902240018693935_70201613055120'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:19:59 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (2.4ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [2 times] (25.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (79.3ms)
+Completed 200 OK in 115ms (Views: 95.3ms | ActiveRecord: 8.4ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-08-19 11:20:21 +0700
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F5xk2X4eXsfNSvIRMl0mWAwrBigvPRf0RoGZBfqRuXylSCeghB0KXnz25A7Uxtg5SsCI/1dzlPNky4nPMwoNKw==", "post"=>{"wall_user_id"=>"14", "poster_id"=>"", "body"=>"hello again"}, "commit"=>"Send"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("poster_id", "created_at", "updated_at", "body", "wall_user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["poster_id", 14], ["created_at", "2017-08-19 04:20:21.554118"], ["updated_at", "2017-08-19 04:20:21.554118"], ["body", "hello again"], ["wall_user_id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:20:21 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (2.5ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [3 times] (15.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (46.2ms)
+Completed 200 OK in 100ms (Views: 90.0ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:23:27 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (12.1ms)
+  Rendered home/index.html.erb within layouts/application (15.9ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `friend_name' for #<User:0x007fb22c48d1f0>
+Did you mean?  friend_names):
+    13:     <a class="card-header-icon">
+    14:       <span class="icon">
+    15:       <% if current_user %>
+    16:         <i class="fa fa-angle-down"><%= current_user.friend_name %></i>
+    17:         <% end %>
+    18:       </span>
+    19:     </a>
+  
+app/views/posts/new.html.erb:16:in `block in _app_views_posts_new_html_erb__4273519418860065153_70201611909180'
+app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__4273519418860065153_70201611909180'
+app/views/home/index.html.erb:30:in `_app_views_home_index_html_erb__2432902240018693935_70201612074100'
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:23:39 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 14]]
+  Rendered posts/new.html.erb (4.5ms)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [3 times] (16.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered home/index.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 55ms (Views: 49.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:24:55 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 14]]
+  Rendered posts/new.html.erb (3.8ms)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [3 times] (16.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered home/index.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 55ms (Views: 49.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:38:34 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (4.1ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  Rendered collection of posts/_post.html.erb [3 times] (22.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (68.0ms)
+Completed 200 OK in 116ms (Views: 97.1ms | ActiveRecord: 11.0ms)
+
+
+Started POST "/toggle_like?post_id=14" for 127.0.0.1 at 2017-08-19 11:38:46 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"14"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "item_id", "item_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 14], ["item_id", 14], ["item_type", "Post"], ["created_at", "2017-08-19 04:38:46.397905"], ["updated_at", "2017-08-19 04:38:46.397905"]]
+  [1m[35m (82.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (1.1ms)
+Completed 200 OK in 114ms (Views: 9.8ms | ActiveRecord: 84.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:38:49 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (3.6ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [3 times] (51.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (81.9ms)
+Completed 200 OK in 105ms (Views: 94.2ms | ActiveRecord: 9.1ms)
+
+
+Started POST "/toggle_like?post_id=11" for 127.0.0.1 at 2017-08-19 11:39:48 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 65]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.5ms)
+Completed 200 OK in 12ms (Views: 4.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:39:51 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.4ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [3 times] (16.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 1190ms (Views: 1178.2ms | ActiveRecord: 8.9ms)
+
+
+Started POST "/toggle_like?post_id=11" for 127.0.0.1 at 2017-08-19 11:39:55 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "item_id", "item_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 14], ["item_id", 11], ["item_type", "Post"], ["created_at", "2017-08-19 04:39:55.364971"], ["updated_at", "2017-08-19 04:39:55.364971"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.6ms)
+Completed 200 OK in 17ms (Views: 6.1ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/toggle_like?post_id=11" for 127.0.0.1 at 2017-08-19 11:40:02 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 67]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.5ms)
+Completed 200 OK in 14ms (Views: 4.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:40:05 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [3 times] (14.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 61ms (Views: 50.3ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/toggle_like?post_id=11" for 127.0.0.1 at 2017-08-19 11:40:08 +0700
+Processing by LikesController#toggle as JS
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 ORDER BY "likes"."id" ASC LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "item_id", "item_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 14], ["item_id", 11], ["item_type", "Post"], ["created_at", "2017-08-19 04:40:08.730633"], ["updated_at", "2017-08-19 04:40:08.730633"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  Rendering likes/toggle.js.erb
+  Rendered likes/toggle.js.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 4.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 11:40:14 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (1.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."wall_user_id" = $1[0m  [["wall_user_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 11 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 11], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 13 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 13], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."item_type" = 'Post' AND "likes"."item_id" = 14 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."item_id" = $1 AND "likes"."item_type" = $2[0m  [["item_id", 14], ["item_type", "Post"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered collection of posts/_post.html.erb [3 times] (15.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["user_id", 14], ["id", 14], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (41.3ms)
+Completed 200 OK in 62ms (Views: 51.1ms | ActiveRecord: 9.4ms)
+
+

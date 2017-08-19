@@ -12,6 +12,13 @@ A Facebook clone for the Bootcamp Ruby class.
 - [X] User can update profile information (name, email, image)
 - [X] User can add another User as friend
 - [X] User can send a message to a friend
+- [x] User can create a Post (bonus: store wall_user_id if posted on another user's wall)
+- [x] Any user can like or unlike a post
+- [ ] Home page (timeline) should display a list of posts by “my friends”
+- [ ] Any user can comment on any post
+- [ ] I can receive an email if someone comments on my post
+
+
 
 
 ## Optional features

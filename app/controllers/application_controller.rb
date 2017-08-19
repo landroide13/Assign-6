@@ -29,4 +29,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  def current_message
+
+  end
+
 end
