@@ -52,7 +52,7 @@ class User < ApplicationRecord
 #------------------------------------------------------------
 
   def image_default
-    avatar.url 
+    avatar.url || "http://lorempixel.com/128/128/sports/fake-user/"
   end 
 
   def another_image

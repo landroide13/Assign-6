@@ -1,19 +1,23 @@
-<h1 class="title">Write Something</h1>
 
 <%= form_for @post do |f| %>
-  <div class="field">
-    <label class="label">To :</label>
-     <div class="control">
-     <%= f.text_field :wall_user_id %>
-     <%= f.hidden_field :poster_id,  value: current_user.id %>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      <p> To : </p>
+      <%= f.text_field :wall_user_id %>
+      <%= f.hidden_field :poster_id,  value: current_user.id %>
+    </p>
+    
+  </header>
+  
+  <div class="card-content">
+    <div class="content">
+      <%= f.text_area :body, class:"textarea" %>
     </div>
   </div>
-  <div class="field">
-    <label class="label">Message</label>
-     <div class="control">
-     <%= f.text_area :body %>
-    </div>
-  </div>
-  <%= f.submit %>
-<% end %>
-
+  <footer class="card-footer">
+    <a class="card-footer-item"><%= f.submit class:"card-footer-item button is-primary is-outlined", value:"Send" %></a>
+   
+  </footer>
+  <% end %>
+</div>
