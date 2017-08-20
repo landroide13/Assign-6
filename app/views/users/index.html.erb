@@ -3,7 +3,7 @@
   <tbody>
     <% User.all.each do |another_user| %>
       <tr>
-        <td><%= image_tag another_user.another_image %></td>
+        <td><%= image_tag another_user.image_default %></td>
           <td>
             <%= another_user.name %></br>
             <%= another_user.email %>

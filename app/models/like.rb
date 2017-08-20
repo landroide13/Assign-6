@@ -4,6 +4,6 @@ class Like < ApplicationRecord
 
   #before_action :authenticate_user! # devise method to help ensure logging in
    
-
+  
 
 end

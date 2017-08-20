@@ -31,14 +31,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def friend_user
-    if current_user.is_friend?(@friend_user)
-      @friend_user = User.new
-      @friend_user
-    end
-  end  
-
-
+  
   def current_message
 
   end

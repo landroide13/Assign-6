@@ -102,7 +102,7 @@ class User < ApplicationRecord
       likes.where(item: item).create!
    end  
   end
-
+ 
   def name_or_email
     name.present? ? name : email
   end 
