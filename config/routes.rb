@@ -8,7 +8,9 @@ Rails.application.routes.draw do
       get :inbox
       get :sent
     end
-  end    
+  end   
+  
+  
 
   post 'toggle_like' => 'likes#toggle' 
   post 'coment' => 'post#coment'

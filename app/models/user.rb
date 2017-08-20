@@ -55,11 +55,6 @@ class User < ApplicationRecord
     avatar.url || image_url.presence || "http://lorempixel.com/128/128/sports/fake-user/"
   end 
 
-  # def another_image
-  #   #image_url.presence || 
-  #   "http://lorempixel.com/128/128/sports/fake-user/"
-  # end  
-
   def add_friend(another)
     friends << another
   end
@@ -110,6 +105,8 @@ class User < ApplicationRecord
   def liking?(item)
     likes.where(item: item).exists?
   end
+
+
  
 
 
