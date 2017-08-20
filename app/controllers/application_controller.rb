@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user 
+  helper_method :friend_user 
+  
 
   private 
 
@@ -28,6 +30,13 @@ class ApplicationController < ActionController::Base
       nil 
     end
   end
+
+  def friend_user
+    if current_user.is_friend?(@friend_user)
+      @friend_user = User.new
+      @friend_user
+    end
+  end  
 
 
   def current_message

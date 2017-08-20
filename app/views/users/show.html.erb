@@ -1,19 +1,19 @@
 
-<% if current_user %>
+<% if current_user.friends %>
     <div class="columns ">
       <div class="card column is-3">
-        <h1 class="title">Hello <%= current_user.name.titleize %> </h1>
+        <h1 class="title">Hello <%= current_user.friends.name.titleize %> </h1>
       
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
-              <%= image_tag current_user.another_image %>
+              <%= image_tag current_user.friends.image_default %>
             </figure>
           </div>
           <div class="media-content">
             <p class="title is-4"></p>
-            <p class="subtitle is-6"><%= current_user.email%></p>
-          </div>
+            <p class="subtitle is-6"><%= current_user.friends.email%></p>
+          </div> 
         </div>
       </div>
       
@@ -32,7 +32,7 @@
 
           <div class="content">
            <h3 class="title">Posts</h3>
-              <%= render current_user.posts_on_his_wall %>
+              <%= render current_user.friends.posts_on_his_wall %>
             <br>
           </div>
         </div>

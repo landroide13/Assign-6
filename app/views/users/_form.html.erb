@@ -30,6 +30,18 @@
         </div>
       </div>
 
+      <div class="field">
+        <%= f.label :Url, class:"label"%>
+        <div class="control"><%= f.file_field :avatar, class: 'input' %>
+        </div>
+      </div>
+          
+      <div class="field">
+        <div class="control">
+          <%= image_tag current_user.image_default %>
+        </div>
+      </div>
+
 
       <div class="field is-grouped">
           <div class="control">

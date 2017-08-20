@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: "poster_id", dependent: :destroy
   has_many :posts_on_his_wall, class_name: 'Post', foreign_key: 'wall_user_id'
   has_many :likes, dependent: :destroy
-
+ 
   has_secure_password
 
   # def password=(value)
@@ -52,12 +52,13 @@ class User < ApplicationRecord
 #------------------------------------------------------------
 
   def image_default
-    avatar.url || "http://lorempixel.com/128/128/sports/fake-user/"
+    avatar.url || image_url.presence || "http://lorempixel.com/128/128/sports/fake-user/"
   end 
 
-  def another_image
-    image_url.presence || "http://lorempixel.com/128/128/sports/fake-user/"
-  end  
+  # def another_image
+  #   #image_url.presence || 
+  #   "http://lorempixel.com/128/128/sports/fake-user/"
+  # end  
 
   def add_friend(another)
     friends << another
@@ -88,7 +89,7 @@ class User < ApplicationRecord
        name = p["name"]["first"] + " "+p["name"]["last"]
        User.create!(
         name: name.titleize, password: p["login"]["password"],
-        email: p["email"] #image_url: p["picture"]["large"]
+        email: p["email"], image_url: p["picture"]["large"]
        ) 
      end  
    end  
@@ -109,7 +110,7 @@ class User < ApplicationRecord
   def liking?(item)
     likes.where(item: item).exists?
   end
-
+ 
 
 
 end

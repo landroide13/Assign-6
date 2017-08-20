@@ -7,12 +7,16 @@
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
-              <%= image_tag current_user.another_image %>
+              <%= image_tag current_user.image_default %>
             </figure>
           </div>
           <div class="media-content">
             <p class="title is-4"></p>
             <p class="subtitle is-6"><%= current_user.email%></p>
+          </div></br>
+          <div class="media-conten">
+          <h2 class="box title">Your Interests</h2>
+
           </div>
         </div>
       </div>
@@ -33,7 +37,7 @@
 
           <div class="content">
            <h3 class="title">Posts</h3>
-              <%= render current_user.posts_on_his_wall %>
+            <%= render current_user.posts_on_his_wall %>
             <br>
           </div>
         </div>
@@ -46,18 +50,20 @@
 
 
       <div class="box">
+      <h2 class="title">Your Friends</h2>
         <% User.all.each do |another_user| %>
           <% if current_user.is_friend?(another_user) %>
             <article class="media">
               <div class="media-left">
                 <figure class="image is-64x64">
-                  <%= image_tag another_user.another_image %>
+                  <%= image_tag another_user.image_default %>
                 </figure>
               </div>
               <div class="media-content">
                   <div class="content">
                     <p>
-                      <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
+                      <strong><%= another_user.name %></strong>
+                       <small><%= another_user.email %></small> 
                       <br>
                       Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
                     </p>

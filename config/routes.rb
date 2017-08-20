@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end    
 
   post 'toggle_like' => 'likes#toggle' 
+  post 'coment' => 'post#coment'
 
   get 'profile' => 'users#edit'
   put 'update'  => 'users#update'
