@@ -38,12 +38,6 @@
         </div>
       </div>  
 
-     
-
-
-
-
-
       <div class="box">
         <% User.all.each do |another_user| %>
           <% if current_user.is_friend?(another_user) %>
@@ -58,7 +52,7 @@
                     <p>
                       <strong><%= another_user.name %></strong> <small><%= another_user.email %></small> 
                       <br>
-                      Lorem ipsum dolor sit amet, consectetur</br> adipiscing elit. Aenean efficitur </br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                      Lorem ipsum dolor sit amet, consectetur</br>sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
                     </p>
                   </div>
               </div>
@@ -68,10 +62,6 @@
         </div>
 
       </div>
-    
-
-
-
 
   <% end %>
 

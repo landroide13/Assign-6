@@ -12,7 +12,7 @@
           </div>
           <div class="media-content">
             <p class="title is-4"></p>
-            <p class="subtitle is-6"><%= current_user.email%></p>
+            <p class="subtitle is-6"><%= current_user.email %></p>
           </div></br>
           <div class="media-conten">
             <h2 class="box title">Your Interests</h2>
@@ -36,7 +36,7 @@
 
           <div class="content">
            <h3 class="title">Posts</h3>
-            <%= render current_user.posts_on_his_wall %>
+            <%= render @posts %>
             <br>
           </div>
         </div>

@@ -4,19 +4,18 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    
   end  
 
   def create
     @post = current_user.posts.build post_params
   
-    if @post.save
-      flash[:success] = 'Post created'
-      redirect_to root_path
-    else
-      flash[:error] = @post.errors.full_messages.to_sentence
-      render 'new'
-    end
+     if @post.save
+       #flash[:success] = 'Post created'
+       redirect_to root_path
+     else
+       #flash[:error] = @post.errors.full_messages.to_sentence
+       render 'new'
+     end
     
   end 
   
